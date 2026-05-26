@@ -14,6 +14,7 @@ Data Persistence: Automatically writes and archives clean customer receipts and 
 Clean Architecture: Implements the MVVM pattern to ensure a clear separation of concerns, resulting in highly maintainable and scalable code.
 
 📂 Project Structure
+
 Commands/: Contains RelayCommand.cs to handle generic user UI interaction events and button clicks.
 
 Data/: Stores auto-generated text reports for both Customer Receipts and Owner Income Logs.

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CoinParkingSystem.ViewModels;
 
 namespace CoinParkingSystem.Views
 {
@@ -22,6 +23,9 @@ namespace CoinParkingSystem.Views
         public EntryView()
         {
             InitializeComponent();
+            DataContext = new EntryViewModel(null);
         }
+
+       
     }
 }
