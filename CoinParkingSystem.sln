@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinParkingSystem", "CoinParkingSystem.csproj", "{EA3DEF40-6EA9-4304-BE60-45CA5F9F4A4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA3DEF40-6EA9-4304-BE60-45CA5F9F4A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3DEF40-6EA9-4304-BE60-45CA5F9F4A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3DEF40-6EA9-4304-BE60-45CA5F9F4A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3DEF40-6EA9-4304-BE60-45CA5F9F4A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B4D2C24-F81C-4292-92A1-021DFB0F88DA}
+	EndGlobalSection
+EndGlobal
