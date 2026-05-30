@@ -16,9 +16,9 @@ namespace CoinParkingSystem.ViewModels
         private readonly MainNavigationViewModel _mainNav;
        
 
-        public ObservableCollection<ParkingSlot> ParkingSlots { get; set; } 
+        public ObservableCollection<ParkingSlot> ParkingSlots { get; set; }
 
-        private ParkingSlot _selectedSlot
+        private ParkingSlot _selectedSlot;
         public ParkingSlot SelectedSlot
         {
             get => _selectedSlot;
