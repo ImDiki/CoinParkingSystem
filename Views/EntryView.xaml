@@ -5,8 +5,93 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinParkingSystem.Views"
         mc:Ignorable="d"
+        DataContext="{Binding CurrentViewModel}"
         Title="EntryView" Height="450" Width="800">
     <Grid>
-        
+
+        <StackPanel Margin="20">
+            <UniformGrid Rows="3" Columns="5">
+                <Button Content="1"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="1"/>
+
+                <Button Content="2"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="2"/>
+
+                <Button Content="3"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="3"/>
+
+                <Button Content="4"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="4"/>
+
+                <Button Content="5"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="5"/>
+
+                <Button Content="6"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="6"/>
+
+                <Button Content="7"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="7"/>
+
+                <Button Content="8"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="8"/>
+
+                <Button Content="9"  Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="9"/>
+
+                <Button Content="10" Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="10"/>
+
+                <Button Content="11" Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="11"/>
+
+                <Button Content="12" Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="12"/>
+
+                <Button Content="13" Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="13"/>
+
+                <Button Content="14" Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="14"/>
+
+                <Button Content="15" Style="{DynamicResource NumButtonStyle}"
+        Command="{Binding SelectSlotCommand}" CommandParameter="15"/>
+
+
+            </UniformGrid>
+            
+        </StackPanel>
     </Grid>
+    <Window.Resources>
+        <Style x:Key="NumButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#2D89EF"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                            CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1E5FBF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#174A94"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 </Window>
