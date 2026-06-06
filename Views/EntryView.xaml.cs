@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace CoinParkingSystem.Views
 {
-    /// <summary>
-    /// EntryView.xaml の相互作用ロジック
-    /// </summary>
-    public partial class EntryView : Window
+    public partial class EntryView : UserControl
     {
         public EntryView()
         {
             InitializeComponent();
+        }
+
+        // 🎯 စာလုံး ၂ လုံးပြည့်တာနဲ့ TxtCarNoPart2 ဆီသို့ Cursor အလိုအလျောက် ရွှေ့ပေးမည့် Event
+        private void CarNoPart1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox textBox && textBox.Text.Length == 2)
+            {
+                TxtCarNoPart2.Focus();
+            }
         }
     }
 }

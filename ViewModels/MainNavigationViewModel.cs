@@ -1,51 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using CoinParkingSystem.Models;
 
 namespace CoinParkingSystem.ViewModels
 {
     public class MainNavigationViewModel : BaseViewModel
     {
-        //画面 Map for use. MapsToMain,MapsToEntry,MapsToExit
+        private object _currentView;
+        private object _navigationService; // Team အဖွဲ့ဝင်များ သုံးထားသော Service Parameter
 
-        private BaseViewModel _currentViewModel;
+        public ObservableCollection<ParkingSlot> SharedParkingSlots { get; set; }
 
-      
-        public BaseViewModel CurrentViewModel
+        public object CurrentView
         {
-            get => _currentViewModel;
-            set
-            {
-                _currentViewModel = value;
-             
-                OnPropertyChanged(nameof(CurrentViewModel));
-            }
-        }
-
-       
-        public void MapsToMain()
-        {
-            
-            CurrentViewModel = new MainViewModel(this);
-        }
-
-        public void MapsToEntry()
-        {
-            CurrentViewModel = new EntryViewModel(this);
-        }
-
-        public void MapsToExit()
-        {
-            CurrentViewModel = new ExitViewModel(this);
+            get => _currentView;
+            set { _currentView = value; OnPropertyChanged(); }
         }
 
         public MainNavigationViewModel()
         {
-           
-            MapsToMain();
+            SharedParkingSlots = new ObservableCollection<ParkingSlot>();
+            for (int i = 1; i <= 15; i++)
+            {
+                SharedParkingSlots.Add(new ParkingSlot { SlotNumber = i, IsOccupied = false });
+            }
+
+            _navigationService = new object();
+
+            NavigateToMain();
         }
 
+        public void NavigateToMain()
+        {
+            CurrentView = new MainViewModel(this, SharedParkingSlots);
+        }
+
+        public void NavigateToEntry()
+        {
+            CurrentView = new EntryViewModel(this, _navigationService, SharedParkingSlots);
+        }
+
+        public void NavigateToExit()
+        {
+            CurrentView = new ExitViewModel(this, _navigationService, SharedParkingSlots);
+        }
     }
 }
