@@ -17,5 +17,7 @@ namespace CoinParkingSystem.Views
                 TxtCarNoPart2.Focus();
             }
         }
+       
+
     }
 }
