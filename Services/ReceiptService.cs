@@ -1,41 +1,43 @@
-﻿using System; 
+using System;
 using System.IO;
 
 namespace CoinParkingSystem.Services
-{            // receipt service.diki
+{
     public class ReceiptService
     {
-        // Receipt can view in folder path in ur bin file >>bin/Debug/Data/....
+        private readonly string _customerReceiptPath;
+        private readonly string _dailyOwnerReportPath;
 
-        // the folder path for customer receipt,owner .diki
-        private string customerReceipt= Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/Customer_Receipt/receipt_history.txt");
-        private string dailyOwnerReport = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/Owner_Receipt/daily_income_report.txt");
-
-        // if the folder does not exit.diki
         public ReceiptService()
         {
-            if (!Directory.Exists("Data/Customer_Receipt"))
-                Directory.CreateDirectory("Data/Customer_Receipt");
+            string dataDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            string customerDirectory = Path.Combine(dataDirectory, "Customer_Receipt");
+            string ownerDirectory = Path.Combine(dataDirectory, "Owner_Receipt");
 
-            if (!Directory.Exists("Data/Owner_Receipt"))
-                Directory.CreateDirectory("Data/Owner_Receipt");
+            Directory.CreateDirectory(customerDirectory);
+            Directory.CreateDirectory(ownerDirectory);
+
+            _customerReceiptPath = Path.Combine(customerDirectory, "receipt_history.txt");
+            _dailyOwnerReportPath = Path.Combine(ownerDirectory, "daily_income_report.txt");
         }
 
-        // Customer Receipt.diki
         public void GenerateCustomerReceipt(string plateNumber, decimal amount)
         {
-            string content = $"--- Receipt ---\nPlate: {plateNumber}\nAmount: ¥{amount}\nTime: {DateTime.Now}\n\n";
-            File.AppendAllText(customerReceipt, content);
+            string content =
+                $"--- Receipt ---{Environment.NewLine}" +
+                $"Plate: {plateNumber}{Environment.NewLine}" +
+                $"Amount: ¥{amount}{Environment.NewLine}" +
+                $"Time: {DateTime.Now}{Environment.NewLine}{Environment.NewLine}";
+
+            File.AppendAllText(_customerReceiptPath, content);
         }
 
-        // Owner Report.diki
         public void SaveDailyIncome(decimal amount)
         {
-            string reportLine = $"{DateTime.Now.ToShortDateString()} | Income: ¥{amount}\n";
-            File.AppendAllText(dailyOwnerReport, reportLine);
+            string reportLine =
+                $"{DateTime.Now.ToShortDateString()} | Income: ¥{amount}{Environment.NewLine}";
+
+            File.AppendAllText(_dailyOwnerReportPath, reportLine);
         }
     }
-
-
-    
 }
