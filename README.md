@@ -1,45 +1,48 @@
-*COIN PARKNG SYSTEM*
+# Coin Parking System
 
-A robust Parking Management System built with C# and WPF, utilizing the MVVM (Model-View-ViewModel) architectural pattern. Features
+A parking-management desktop application built with **C# and WPF**. The project uses an MVVM-based structure to separate UI views, application state, commands, and supporting services.
 
-Features
-Dashboard Status: Dynamically counts and displays real-time available parking slots.
+## Features
 
-Entry System (入庫): Manages a visual grid of slots 1 to 15 (Green = Empty, Red = Occupied). Clicking 登録 (Register) automatically records the vehicle's entry timestamp.
+- **Dashboard:** Displays parking-space availability.
+- **Entry workflow (入庫):** Manages 15 parking slots and records entry timestamps.
+- **Exit workflow (出庫):** Retrieves an occupied slot and calculates the parking fee based on elapsed time.
+- **Receipt records:** Writes customer receipt information to local text files.
+- **Income records:** Stores daily income entries for the owner.
 
-Exit System (出庫): Searches for an occupied slot, fetches the entry time, and automatically calculates parking fees based on elapsed duration.
+## Project Structure
 
-Data Persistence: Automatically writes and archives clean customer receipts and daily income reports into text files inside the Data/ directory.
+- `Commands/` — reusable command handling for UI actions
+- `Models/` — application data models such as `ParkingSlot`
+- `Services/` — supporting services such as receipt and income file output
+- `ViewModels/` — application state and navigation logic
+- `Views/` — WPF/XAML user-interface views
+- `Data/` — locally generated receipt and income records
 
-Clean Architecture: Implements the MVVM pattern to ensure a clear separation of concerns, resulting in highly maintainable and scalable code.
+## Tech Stack
 
-📂 Project Structure
+- C#
+- .NET / WPF
+- XAML
+- MVVM
+- Git / GitHub
 
-Commands/: Contains RelayCommand.cs to handle generic user UI interaction events and button clicks.
+## Architecture Notes
 
-Data/: Stores auto-generated text reports for both Customer Receipts and Owner Income Logs.
+`MainNavigationViewModel` manages the current view and shares parking-slot state between the main, entry, and exit workflows. `ReceiptService` keeps receipt and income file-writing logic outside the UI views.
 
-Models/: Defines data structures like ParkingSlot.cs to hold slot numbers, occupancy states, and timestamps.
+This is a student project and remains a learning project rather than a production parking system.
 
-Services/: Manages background file operations and logging tasks via ReceiptService.cs, keeping IO logic decoupled from the UI.
+## Run Locally
 
-ViewModels/: Acts as the mediator between the UI and Model, utilizing MainNavigationViewModel.cs as a central router to switch screens (MapsToMain, MapsToEntry, MapsToExit).
+1. Clone the repository.
+2. Open the solution in Visual Studio.
+3. Restore/build the project.
+4. Run the WPF application.
 
-Views/: Contains the XAML layouts for MainWindow, MainView (Dashboard), EntryView (1-15 Slot Grid), and ExitView (Payment Terminal).
+## Possible Improvements
 
-
-🛠️ Technologies Used
-Language: C#
-
-Framework: .NET (WPF)
-
-Design Pattern: MVVM (Model-View-ViewModel)
-
-Version Control: Git & GitHub (Feature-Branch Workflow)
-
-🚀 How to Use
-Clone this repository to your local machine using GitHub Desktop or Git Terminal.
-
-Open the solution file (.sln) in Visual Studio 2022.
-
-Build the project and run the application.
+- Add automated tests for fee calculations and state changes.
+- Improve file-path handling and error handling.
+- Add persistent structured storage instead of text-file records.
+- Continue separating application logic from UI concerns.
