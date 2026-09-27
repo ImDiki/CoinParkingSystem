@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Windows.Input;
 
 namespace CoinParkingSystem.Commands
 {
-    // ဒီ class က Button click တွေကို ViewModel ဆီ ပို့ပေးဖို့ အဓိက သုံးတာပါ
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;
